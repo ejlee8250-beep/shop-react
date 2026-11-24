@@ -1,36 +1,37 @@
 import { useState } from 'react'
 import './App.css'
-import data from './data'
+import data from './db/data'
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Home from './components/Home';
 import Detail from './components/Detail';
 import About from './components/About';
+import Footer from './components/Footer';
 
 function App() {
-  const [shoes] = useState(data);
+  const [shoes, setShoes] = useState(data);
   // console.log(shoes[0].imgUrl);
 
   const navigate = useNavigate();
 
-
+  
   return (
     <div className="App">
       <nav className="bg-gray-900 text-white px-4 py-3 shadow-md">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <a onClick={() => { navigate('/') }} className="text-xl font-bold tracking-wide hover:text-gray-300 transition-colors">
+          <a onClick={()=>{navigate('/')}} className="text-xl font-bold tracking-wide hover:text-gray-300 transition-colors">
             ShoesShop
           </a>
           <div className="flex space-x-6 ml-6 mr-auto">
-            <a onClick={() => { navigate('/')}} className="text-gray-300 hover:text-white transition-colors font-medium">
+            <a onClick={()=>{navigate('/')}} className="text-gray-300 hover:text-white transition-colors font-medium">
               Home
             </a>
-            <a onClick={() => { navigate('/detail/0')}} className="text-gray-300 hover:text-white transition-colors font-medium">
+            <a onClick={()=>{navigate('/detail/0')}} className="text-gray-300 hover:text-white transition-colors font-medium">
               Detail
             </a>
-            <a onClick={() => { navigate('/cart')}} className="text-gray-300 hover:text-white transition-colors font-medium">
+            <a onClick={()=>{navigate('/cart')}} className="text-gray-300 hover:text-white transition-colors font-medium">
               Cart
             </a>
-            <a onClick={() => { navigate('/about')}} className="text-gray-300 hover:text-white transition-colors font-medium">
+            <a onClick={()=>{navigate('/about')}} className="text-gray-300 hover:text-white transition-colors font-medium">
               About
             </a>
           </div>
@@ -38,15 +39,17 @@ function App() {
       </nav>
 
       <Routes>
-        <Route path='/' element={<Home shoes={shoes} />}></Route>
+        <Route path='/' element={<Home shoes={shoes} setShoes={setShoes} />}></Route>
         <Route path='/detail/:id' element={<Detail shoes={shoes} />} />
         <Route path='/cart' element={<div>Cart</div>} />
         <Route path='/about' element={<About />}>
           <Route path='member' element={<div>Member 입니다.</div>} />
           <Route path='location' element={<div>Location 입니다.</div>} />
-        </Route>
+        </Route>        
         <Route path='*' element={<div>페이지를 찾을 수 없습니다.</div>} />
-      </Routes>
+      </Routes> 
+
+      <Footer />    
 
     </div>
   )
