@@ -4,7 +4,7 @@ const Nike = ({nike}) => {
   return (
     <div className="flex flex-col items-center text-center p-4">
         <img
-            src={nike.imgUrl.startsWith('/shop-react') ? nike.imgUrl : `//img (3)/nike/${nike.imgUrl.split('/').pop()}`}
+            src={nike.imgUrl.startsWith('/shop-react') ? nike.imgUrl : `/img (3)/nike/${nike.imgUrl.split('/').pop()}`}
             className="w-4/5 h-auto rounded-xl shadow-sm mb-4 object-cover transform hover:scale-102 transition-transform duration-300"
             alt='item2'
         />
