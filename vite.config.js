@@ -8,5 +8,5 @@ export default defineConfig({
     react(),
     tailwindcss()
   ],
-   base: '/shop-react/' // Vercel로 배포시 필요 없음
+  //  base: '/shop-react/' // Vercel로 배포시 필요 없음
 })
